@@ -1,0 +1,117 @@
+<h2 mat-dialog-title><mat-icon>chat_info</mat-icon> {{tituloAccion}} Ticket</h2>
+<mat-dialog-content style="width: 500px; height: 820px;">
+    <form [formGroup]="formTickets">
+        <mat-grid-list cols="1" rowHeight="90px" >
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Titulo de Ticket</mat-label>
+                    <input matInput formControlName="titulo" autocomplete="off" matInput placeholder="Ingrese titulo...">
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- SELECT EMPRESAS-->
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Empresas</mat-label>
+                    <mat-select formControlName="empresa_id">
+                   <mat-option *ngFor="let item of listEmpresa" [value]="item.id">
+                        {{item.nom_empresa}}
+                    </mat-option>
+                    </mat-select>
+            </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- SELECT AREAS DE AREA-->
+            <mat-grid-tile>
+            <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Area</mat-label>
+                    <mat-select formControlName="area_id">
+                    <mat-option *ngFor="let item of listArea" [value]="item.id">
+                        {{item.nom_area}}
+                    </mat-option>
+                    </mat-select>
+            </mat-form-field>
+
+            <!-- SELECT REQUERIMIENTOS DE REQUERIMIENTO-->
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Requerimiento</mat-label>
+                    <mat-select formControlName="requerimiento_id">
+                    <mat-option *ngFor="let item of listRequerimiento" [value]="item.id">
+                        {{item.nom_requerimiento}}
+                    </mat-option>
+                    </mat-select>
+            </mat-form-field>
+
+            <!-- SELECT SUBTIPO DE SUBTIPO-->
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Subtipo</mat-label>
+                    <mat-select formControlName="subtipo_id">
+                     <mat-option *ngFor="let item of listSubtipo" [value]="item.id">
+                        {{item.nom_subtipo}}
+                        </mat-option>
+                    </mat-select>
+            </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- INPUT DETALLE-->
+            <mat-grid-tile>
+                <mat-form-field style="width: 350px;">
+                    <mat-label><Data>Detalle</Data></mat-label>
+                    <textarea matInput formControlName="detalle" autocomplete="off" matInput placeholder="Ingrese detalles..."></textarea>
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <!--INPUT FECHA DE TICKETS --> 
+            <!--<mat-grid-tile>
+                <mat-form-field style="width: 350px;" >
+                <input formControlName="fechaRegistro" matInput [matDatepicker]="picker" placeholder="Elegir Fecha">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </mat-grid-tile>-->
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Fecha</mat-label>
+                    <input matInput formControlName="fechaRegistro" autocomplete="off" matInput placeholder="Ingrese fecha...">
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- INPUT DE HORA-->
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Hora</mat-label>
+                    <input matInput formControlName="hora" autocomplete="off" matInput placeholder="Ingrese titulo..." type="number">
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- INPUT DEL RESPONSABLE-->
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Responsable</mat-label>
+                    <input matInput formControlName="responsable" autocomplete="off" matInput placeholder="Ingrese responsable...">
+                  </mat-form-field>
+            </mat-grid-tile>
+
+            <!-- INPUT DEL SOLICITANTE-->
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" style="width: 350px;">
+                    <mat-label>Solicititante</mat-label>
+                    <input  matInput formControlName="solicitante" autocomplete="off" matInput placeholder="Ingrese solicitante...">
+                  </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+
+  <button mat-button mat-dialog-close><mat-icon>cancel</mat-icon>Close</button>
+  <button mat-button 
+        (click)="addEditTicket()" [disabled]="formTickets.invalid">  
+        <mat-icon>save</mat-icon>{{botonAccion}}
+    </button>
+</mat-dialog-actions>

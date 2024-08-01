@@ -1,0 +1,15 @@
+.input{
+    width: 120px;
+    height: 50px;
+}
+
+.input[type=textarea]
+{
+  width: 100%;
+  padding: 8px 18px;
+  margin: 9px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
